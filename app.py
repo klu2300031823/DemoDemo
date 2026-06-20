@@ -3,7 +3,7 @@ import time
 
 st.set_page_config(
     page_title="Java Quiz",
-    page_icon="🏏",
+    page_icon="",
     layout="centered"
 )
 
@@ -232,7 +232,7 @@ if st.session_state.submitted:
 
 question = questions[current]
 
-st.title("🏏 Cricket Quiz Challenge")
+st.title("Java Quiz Challenge")
 
 st.write(f"### Question {current + 1} of {TOTAL}")
 
