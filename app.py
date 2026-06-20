@@ -189,3 +189,6 @@ if current == TOTAL - 1:
         st.session_state.submitted = True
 
         st.rerun()
+
+time.sleep(1)
+st.rerun()
