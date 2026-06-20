@@ -232,7 +232,7 @@ if st.session_state.submitted:
 
 question = questions[current]
 
-st.title("Java Quiz Challenge")
+st.title("Java Quiz Challenge (Your Answers Should Be Numbers Or LowerCase Single Words Without Any Symbols)")
 
 st.write(f"### Question {current + 1} of {TOTAL}")
 
