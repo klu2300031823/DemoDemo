@@ -134,27 +134,6 @@ if remaining <= 0:
         st.session_state.start_time = time.time()
         st.rerun()
 
-# ===================== QUESTION =====================
-
-st.write("###")
-st.write(question["q"])
-
-answer = st.text_input(
-    "Type your answer:",
-    value=st.session_state.answers[current]
-)
-
-st.session_state.answers[current] = answer
-
-# ===================== SAVE & NEXT =====================
-
-if current < TOTAL - 1:
-
-    if st.button("💾 Save & Next"):
-        st.session_state.current += 1
-        st.session_state.start_time = time.time()
-        st.rerun()
-
 # ===================== LAST QUESTION =====================
 
 if current == TOTAL - 1:
