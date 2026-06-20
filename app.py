@@ -87,7 +87,31 @@ if "answers" not in st.session_state:
 if "start_time" not in st.session_state:
     st.session_state.start_time = time.time()
 
+if "submitted" not in st.session_state:
+    st.session_state.submitted = False
+
 current = st.session_state.current
+
+if st.session_state.submitted:
+
+    score = st.session_state.score
+
+    st.title("🏆 Quiz Completed")
+    st.success(f"Your Score: {score}/{TOTAL}")
+
+    percentage = (score / TOTAL) * 100
+
+    if percentage >= 80:
+        st.balloons()
+        st.success("Excellent Cricket Knowledge! 🔥")
+    elif percentage >= 60:
+        st.success("Very Good Performance! 👍")
+    elif percentage >= 40:
+        st.warning("Good Attempt!")
+    else:
+        st.error("Need More Cricket Watching 😄")
+
+    st.stop()
 # ===================== CURRENT QUESTION =====================
 
 question = questions[current]
@@ -161,26 +185,7 @@ if current == TOTAL - 1:
             if user_answer == correct_answer:
                 score += 1
 
-        st.session_state.clear()
+        st.session_state.score = score
+        st.session_state.submitted = True
 
-        st.title("🏆 Quiz Completed")
-        st.success(f"Your Score: {score}/{TOTAL}")
-
-        percentage = (score / TOTAL) * 100
-
-        if percentage >= 80:
-            st.balloons()
-            st.success("Excellent Cricket Knowledge! 🔥")
-        elif percentage >= 60:
-            st.success("Very Good Performance! 👍")
-        elif percentage >= 40:
-            st.warning("Good Attempt!")
-        else:
-            st.error("Need More Cricket Watching 😄")
-
-        st.stop()
-
-# ===================== AUTO REFRESH TIMER =====================
-
-time.sleep(1)
-st.rerun()
+        st.rerun()
