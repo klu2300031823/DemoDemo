@@ -145,7 +145,6 @@ if remaining <= 0:
         st.rerun()
 
 # ===================== LAST QUESTION =====================
-
 if current == TOTAL - 1:
 
     st.write("---")
@@ -162,6 +161,9 @@ if current == TOTAL - 1:
             if user_answer == correct_answer:
                 score += 1
 
+        st.session_state.clear()
+
+        st.title("🏆 Quiz Completed")
         st.success(f"Your Score: {score}/{TOTAL}")
 
         percentage = (score / TOTAL) * 100
@@ -169,15 +171,14 @@ if current == TOTAL - 1:
         if percentage >= 80:
             st.balloons()
             st.success("Excellent Cricket Knowledge! 🔥")
-
         elif percentage >= 60:
             st.success("Very Good Performance! 👍")
-
         elif percentage >= 40:
             st.warning("Good Attempt!")
-
         else:
             st.error("Need More Cricket Watching 😄")
+
+        st.stop()
 
 # ===================== AUTO REFRESH TIMER =====================
 
