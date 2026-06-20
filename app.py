@@ -125,6 +125,15 @@ answer = st.text_input(
 
 st.session_state.answers[current] = answer
 
+# ===================== SAVE & NEXT =====================
+
+if current < TOTAL - 1:
+
+    if st.button("💾 Save & Next"):
+        st.session_state.current += 1
+        st.session_state.start_time = time.time()
+        st.rerun()
+
 # ===================== AUTO NEXT WHEN TIME ENDS =====================
 
 if remaining <= 0:
