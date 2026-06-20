@@ -125,27 +125,35 @@ answer = st.text_input(
 
 st.session_state.answers[current] = answer
 
-# ===================== NAVIGATION =====================
+# ===================== AUTO NEXT WHEN TIME ENDS =====================
 
-col1, col2 = st.columns(2)
-
-with col1:
-
-    if current > 0:
-
-        if st.button("⬅ Prev"):
-            st.session_state.current -= 1
-            st.session_state.start_time = time.time()
-            st.rerun()
-
-with col2:
+if remaining <= 0:
 
     if current < TOTAL - 1:
+        st.session_state.current += 1
+        st.session_state.start_time = time.time()
+        st.rerun()
 
-        if st.button("💾 Save & Next"):
-            st.session_state.current += 1
-            st.session_state.start_time = time.time()
-            st.rerun()
+# ===================== QUESTION =====================
+
+st.write("###")
+st.write(question["q"])
+
+answer = st.text_input(
+    "Type your answer:",
+    value=st.session_state.answers[current]
+)
+
+st.session_state.answers[current] = answer
+
+# ===================== SAVE & NEXT =====================
+
+if current < TOTAL - 1:
+
+    if st.button("💾 Save & Next"):
+        st.session_state.current += 1
+        st.session_state.start_time = time.time()
+        st.rerun()
 
 # ===================== LAST QUESTION =====================
 
