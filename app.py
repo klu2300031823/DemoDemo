@@ -120,7 +120,8 @@ st.write(question["q"])
 
 answer = st.text_input(
     "Type your answer:",
-    value=st.session_state.answers[current]
+    value=st.session_state.answers[current],
+    key=f"q_{current}"
 )
 
 st.session_state.answers[current] = answer
